@@ -1,11 +1,1296 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paradise Luxury Resort</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+/* ================= FONTES ================= */
+body {font-family:'Inter', sans-serif; background-color: #f7f5f2; color: #2d2d2d; }
+.luxury-title, h1, h2, h3, h4, h5, h6 { font-family:'Roboto', sans-serif;
+letter-spacing:1px;}
+/* ================= HEADER ================= */
+#introCarousel,
+#introCarousel .carousel-inner,
+#introCarousel .carousel-item { height: 100vh; }
+#introCarousel video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* LOGO FIXO NO HEADER */
+
+.hero-logo{
+position:absolute;
+top:120px;
+left:50%;
+transform:translateX(-50%);
+z-index:5;
+}
+
+.hero-logo img{
+width:220px;
+height:auto;
+filter:drop-shadow(0 8px 25px rgba(0,0,0,0.35));
+
+}
+
+.navbar{
+z-index:2000;
+position:fixed;
+top:0;
+width:100%;
+}
+/* fim */
+#introCarousel .carousel-item::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(10,22,40,0.45) 0%, rgba(10,22,40,0.7) 100%);
+  z-index: 1;
+}
+.carousel-caption { z-index: 2; }
+.navbar {
+  z-index: 2000;
+  padding: 1.1em 1.5em;
+  background: linear-gradient(180deg, rgba(206, 114, 8, 0.95), rgba(137, 74, 2, 0.95)) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #ffffff57;
+}
+.navbar-brand {
+  font-family: 'Roboto', serif;
+  font-weight: 400;
+  font-size: 1.35rem;
+  letter-spacing: 1.5px;
+  color: #e8c4c0 !important;
+}
+.navbar .nav-link {
+  color: rgba(255,255,255,0.75) !important;
+  font-weight: 500;
+  font-size: 0.88rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.navbar .nav-link:hover { color: #e8c4c0 !important; }
+html { scroll-behavior: smooth; }
+/* ================= LAYOUT ================= */
+.section-padding { padding: 120px 0; }
+.luxury-title {
+  font-weight: 400;
+  letter-spacing: 4px;
+  margin-bottom: 25px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+}
+.subtitle {
+  color: #777;
+  font-size: 17px;
+  font-weight: 300;
+  max-width: 720px;
+  margin: auto;
+  text-align: center;
+  line-height: 1.8;
+}
+.btn-gold {
+  background: linear-gradient(135deg, rgba(206, 114, 8, 0.95), rgba(206, 114, 8, 0.95) );
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 20px rgba(183,110,121,0.3);
+}
+.btn-gold:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(183,110,121,0.45);
+  color: #fff;
+}
+.bg-soft { background: #f7f5f2; }
+.service-box {
+  padding: 45px 25px;
+  transition: all 0.4s ease;
+  text-align: center;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+.service-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+.service-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(247, 177, 96, 0.95), rgba(246, 191, 127, 0.95));
+  border-radius: 50%;
+  transition: all 0.4s ease;
+}
+.service-box:hover .service-icon {
+  background: linear-gradient(135deg, rgba(243, 165, 75, 0.95), rgba(242, 139, 22, 0.95));
+}
+.service-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke:  rgba(255, 255, 255, 0.95);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.4s ease;
+}
+.service-box:hover .service-icon svg {
+  stroke: #fff;
+}
+/* testimonial styles moved to improved section below */
+.bg-dark-section {
+  background: linear-gradient(135deg,  rgba(22, 62, 2, 0.95),  rgba(22, 62, 2, 0.95)) !important;
+  color: #fff !important;
+}
+/* reserva-box styles moved to improved section below */
+/* ================= GALERIAS ================= */
+.section-carousel img,
+.lazer-carousel img {
+  height: 450px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.section-carousel .carousel-control-prev,
+.section-carousel .carousel-control-next,
+.lazer-carousel .carousel-control-prev,
+.lazer-carousel .carousel-control-next {
+  width: 55px;
+  height: 55px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(10,22,40,0.7);
+  border-radius: 50%;
+  opacity: 1;
+  transition: background 0.3s;
+}
+.section-carousel .carousel-control-prev:hover,
+.section-carousel .carousel-control-next:hover,
+.lazer-carousel .carousel-control-prev:hover,
+.lazer-carousel .carousel-control-next:hover {
+  background: rgba(183,110,121,0.8);
+}
+.section-carousel .carousel-control-prev-icon,
+.section-carousel .carousel-control-next-icon,
+.lazer-carousel .carousel-control-prev-icon,
+.lazer-carousel .carousel-control-next-icon {
+  filter: invert(1);
+}
+footer {
+  background: rgba(22, 62, 2, 0.95);
+  color: #888;
+  padding: 60px 0;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 1px;
+  border-top: 1px solid rgba(183,110,121,0.1);
+}
+/* ================= CONTATO ================= */
+.contact-form .form-control {
+  border-radius: 12px;
+  border: 1px solid #e0dbd5;
+  padding: 14px 18px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+  background: #fff;
+}
+.contact-form .form-control:focus {
+  border-color: #b76e79;
+  box-shadow: 0 0 0 3px rgba(183,110,121,0.12);
+}
+.contact-info h5 { font-weight: 400; margin-bottom: 15px; color: #0a1628; }
+.contact-info p { margin-bottom: 8px; color: #666; }
+/* ================= GALERIA DE VIDEOS ================= */
+#galeria-videos {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: linear-gradient(180deg,  rgba(22, 62, 2, 0.95),  rgba(22, 62, 2, 0.95)) !important;
+  padding: 90px 0 70px;
+  overflow: hidden;
+}
+#galeria-videos .gallery-header {
+  text-align: center;
+  padding: 0 20px 50px;
+}
+#galeria-videos .gallery-header h2 {
+  font-family: 'Roboto', serif;
+  color: #fff;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  letter-spacing: 5px;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+#galeria-videos .gallery-header .gold-line {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(206, 114, 8, 0.95), rgba(206, 114, 8, 0.95));
+  margin: 16px auto 20px;
+}
+#galeria-videos .gallery-header p {
+  color: #8899aa;
+  font-size: 16px;
+  font-weight: 300;
+  max-width: 580px;
+  margin: auto;
+  line-height: 1.7;
+}
+/* ── GRID PRINCIPAL ── */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 6px;
+  padding: 0 6px;
+}
+.video-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: #111;
+  border-radius: 4px;
+}
+.video-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+/* Tamanhos */
+.video-card.featured {
+  grid-column: span 2;
+  grid-row: span 2;
+  height: 520px;
+}
+.video-card.tall {
+  grid-column: span 1;
+  grid-row: span 2;
+  height: 520px;
+}
+.video-card.wide {
+  grid-column: span 2;
+  grid-row: span 1;
+  height: 257px;
+}
+.video-card.square {
+  grid-column: span 1;
+  grid-row: span 1;
+  height: 257px;
+}
+/* Overlay */
+.video-card .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10,22,40,0) 30%, rgba(10,22,40,0.85) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  z-index: 2;
+}
+.video-card:hover .overlay { opacity: 1; }
+.video-card:hover video { transform: scale(1.05); }
+/* Play button */
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  width: 56px;
+  height: 56px;
+  background: rgba(206, 114, 8, 0.95);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.35s ease;
+  z-index: 3;
+  border: none;
+  box-shadow: 0 4px 20px rgba(133, 73, 4, 0.95);
+}
+.play-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+  margin-left: 3px;
+}
+.video-card:hover .play-btn {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.video-card .tag {
+  display: inline-block;
+  background: linear-gradient(135deg, #b76e79, #d4a0a7);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+  width: fit-content;
+}
+.video-card .label {
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+.video-card .desc {
+  color: rgba(255,255,255,0.6);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  font-weight: 300;
+}
+/* ── LIGHTBOX ── */
+.video-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,22,40,0.97);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.25s ease;
+}
+.video-lightbox.active { display: flex; }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.lightbox-inner {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+}
+.lightbox-inner video {
+  width: 100%;
+  border-radius: 12px;
+  max-height: 80vh;
+  object-fit: contain;
+  background: #000;
+}
+.lightbox-close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #e8c4c0;
+  font-size: 32px;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+.lightbox-close:hover { opacity: 1; }
+.lightbox-info {
+  margin-top: 18px;
+  text-align: center;
+}
+.lightbox-info h4 {
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+.lightbox-info p {
+  color: #8899aa;
+  font-size: 14px;
+  margin: 0;
+}
+/* ── GALLERY CTA ── */
+.gallery-cta {
+  text-align: center;
+  padding: 50px 20px 0;
+}
+/* ── Decorative accent line ── */
+.accent-line {
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, #b76e79, #d4a0a7);
+  margin: 0 auto 20px;
+}
+/* ── Carousel caption refinement ── */
+.carousel-caption h1 {
+  font-family: 'Roboto', serif;
+    font-weight: 400 !important;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.3);
+    outline: double #ffffff;
+    padding: .2em;
+}
+.carousel-caption .lead {
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.85);
+  border-bottom: solid #fff 0.1em;
+}
+/* ── Testimonial stars ── */
+.testimonial .stars {
+  color:rgba(206, 114, 8, 0.95);
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+}
+/* ── Section titles underline ── */
+.luxury-title::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(206, 114, 8, 0.95), rgba(206, 114, 8, 0.95));
+  margin: 18px auto 0;
+}
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f7f5f2; }
+::-webkit-scrollbar-thumb { background: rgba(42, 114, 5, 0.95); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(42, 114, 5, 0.95); }
+/* ── WhatsApp Floating Button ── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 60px;
+  height: 60px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  z-index: 9000;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 30px rgba(37,211,102,0.55);
+}
+.whatsapp-float svg {
+  width: 32px;
+  height: 32px;
+  fill: #fff;
+}
+/* ── Testimonial Improved Layout ── */
+.testimonial {
+  background: #fff;
+  padding: 50px 35px 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+  text-align: center;
+  color: #2d2d2d;
+  border: 1px solid rgba(183,110,121,0.08);
+  position: relative;
+  overflow: hidden;
+}
+.testimonial::before {
+  content: '\201C';
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  font-size: 5rem;
+  font-family: 'Playfair Display', serif;
+  color: rgba(206, 114, 8, 0.371);
+  line-height: 1;
+}
+.testimonial .testimonial-text {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+.testimonial .testimonial-name {
+  font-weight: 400;
+  font-size: 1.05rem;
+  color: #0a1628;
+}
+.testimonial .testimonial-role {
+  font-size: 0.85rem;
+  color: #999;
+  letter-spacing: 0.5px;
+}
+/* ── Reserva Improved Layout ── */
+.reserva-box {
+  background: linear-gradient(135deg,  rgba(22, 62, 2, 0.95),  rgba(22, 62, 2, 0.95));
+  padding: 100px 50px;
+  border-radius: 28px;
+  text-align: center;
+  border: 1px solid rgba(183,110,121,0.2);
+  box-shadow: 0 30px 80px rgba(10,22,40,0.35);
+  position: relative;
+  overflow: hidden;
+}
+.reserva-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 40%, rgba(183,110,121,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.reserva-box .reserva-subtitle {
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  opacity: 0.85;
+  max-width: 520px;
+  margin: 0 auto 10px;
+  line-height: 1.7;
+}
+.reserva-features {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 35px 0;
+  flex-wrap: wrap;
+}
+.reserva-feature {
+  text-align: center;
+  color: rgba(255,255,255,0.8);
+}
+.reserva-feature svg {
+  width: 28px;
+  height: 28px;
+  stroke:rgba(206, 114, 8, 0.95);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  margin-bottom: 8px;
+}
+.reserva-feature span {
+  display: block;
+  font-size: 0.82rem;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+}
+/* ── Footer Social Links ── */
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+.footer-social a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.293);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.footer-social a:hover {
+  background: rgba(206, 114, 8, 0.95);
+  border-color: rgba(173, 95, 7, 0.95);
+}
+.footer-social a svg {
+  width: 18px;
+  height: 18px;
+  fill: #888;
+  transition: fill 0.3s;
+}
+.footer-social a:hover svg {
+  fill: #fff;
+}
+@media (max-width: 576px) {
+  .reserva-features { gap: 20px; }
+  .whatsapp-float { bottom: 20px; right: 20px; width: 54px; height: 54px; }
+  .whatsapp-float svg { width: 28px; height: 28px; }
+}
+/* ── RESPONSIVO ── */
+@media (max-width: 991px) {
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .video-card.featured {
+    grid-column: span 2;
+    grid-row: span 1;
+    height: 300px;
+  }
+  .video-card.tall {
+    grid-column: span 1;
+    grid-row: span 1;
+    height: 220px;
+  }
+  .video-card.wide {
+    grid-column: span 2;
+    grid-row: span 1;
+    height: 220px;
+  }
+  .video-card.square {
+    grid-column: span 1;
+    height: 220px;
+  }
+  .video-card .overlay { opacity: 1; }
+  .play-btn { opacity: 1; transform: translate(-50%, -50%) scale(0.9); }
+}
+/* ===== AJUSTE MOBILE HEADER ===== */
+
+@media (max-width:768px){
+  .btn-gold{
+    padding: 1em;
+  }
+.hero-logo{
+top:100px;
+}
+
+.hero-logo img{
+width:160px;
+}
+
+.carousel-caption{
+top:55%;
+transform:translateY(-50%);
+padding-left:20px;
+padding-right:20px;
+}
+
+.carousel-caption h1{
+font-size:1.8rem;
+}
+
+.carousel-caption .lead{
+font-size:0.95rem;
+}
+
+}
+@media (max-width: 576px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 0 4px;
+  }
+  .video-card.featured,
+  .video-card.tall,
+  .video-card.wide,
+  .video-card.square {
+    grid-column: span 1;
+    grid-row: span 1;
+    height: 56vw;
+    min-height: 200px;
+  }
+  #galeria-videos { padding: 60px 0 50px; }
+  .video-card .overlay { opacity: 1; }
+  .play-btn { opacity: 1; }
+}
+@media (max-width: 768px) {
+  .section-padding { padding: 70px 0; }
+  .section-carousel img,
+  .lazer-carousel img { height: 250px; }
+}
+</style>
 </head>
 <body>
-    <h1>TESTE</h1>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<div class="container-fluid">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="collapse navbar-collapse justify-content-end" id="menu">
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="#introCarousel">Inicio</a></li>
+      <li class="nav-item"><a class="nav-link" href="#sobre">Acomodacoes</a></li>
+      <li class="nav-item"><a class="nav-link" href="#lazer">Lazer</a></li>
+      <li class="nav-item"><a class="nav-link" href="#servicos">Servicos</a></li>
+      <li class="nav-item"><a class="nav-link" href="#depoimentos">Depoimentos</a></li>
+      <li class="nav-item"><a class="nav-link" href="#reserva">Reserva</a></li>
+      <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+    </ul>
+  </div>
+</div>
+</nav>
+<!-- HEADER -->
+
+<div id="introCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+ <!-- LOGO FIXO -->
+ <div class="hero-logo">
+  <img src="img/logo.png" alt="Paradise Resort">
+  </div>
+<div class="carousel-inner">
+   
+  <div class="carousel-item active">
+    <video autoplay muted loop playsinline preload="metadata">
+      <source src="https://assets.mixkit.co/videos/4075/4075-1080.mp4" type="video/mp4">
+    </video>
+    <div class="carousel-caption d-flex h-100 align-items-center justify-content-center flex-column text-center">
+      <h1 class="display-3 fw-bold">Bem-vindo a Vila Normanda</h1>
+      <p class="lead">Natureza, conforto e sofisticacao em um so lugar</p>
+      <a class="btn btn-gold btn-lg mt-3" href="#reserva">Reservar Agora</a>
+    </div>
+  </div>
+  <div class="carousel-item">
+    <video autoplay muted loop playsinline preload="metadata">
+      <source src="https://assets.mixkit.co/videos/50873/50873-1080.mp4" type="video/mp4">
+    </video>
+    <div class="carousel-caption d-flex h-100 align-items-center justify-content-center flex-column text-center">
+    
+      <h1 class="display-3 fw-bold">Luxo e Sofisticacão</h1>
+      <p class="lead">Suites premium em meio a natureza</p>
+    </div>
+  </div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#introCarousel" data-bs-slide="prev">
+  <span class="carousel-control-prev-icon"></span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#introCarousel" data-bs-slide="next">
+  <span class="carousel-control-next-icon"></span>
+</button>
+</div>
+<!-- ACOMODACOES -->
+<section id="sobre" class="section-padding bg-soft">
+<div class="container">
+  <h2 class="luxury-title">ACOMODACOES</h2>
+  <p class="subtitle">Conforto, sofisticacao e exclusividade em cada detalhe. Nossas suites foram projetadas para oferecer uma experiencia unica.</p>
+  <div class="row align-items-center mt-5">
+    <div class="col-lg-5 mb-4">
+      <h4 class="fw-bold mb-3">Suites Premium</h4>
+      <p>Ambientes amplos com decoracao sofisticada, varandas privativas e atendimento personalizado 24h.</p>
+      <ul class="mt-4" style="list-style: none; padding-left: 0;">
+        <li style="margin-bottom: 10px;"><span style="color: #b76e79; font-weight: 600; margin-right: 8px;">&#10003;</span> Cama King Size</li>
+        <li style="margin-bottom: 10px;"><span style="color: #b76e79; font-weight: 600; margin-right: 8px;">&#10003;</span> Banheira exclusiva</li>
+        <li style="margin-bottom: 10px;"><span style="color: #b76e79; font-weight: 600; margin-right: 8px;">&#10003;</span> Vista panoramica</li>
+        <li style="margin-bottom: 10px;"><span style="color: #b76e79; font-weight: 600; margin-right: 8px;">&#10003;</span> Servico de quarto 24h</li>
+      </ul>
+      <a href="#reserva" class="btn btn-gold mt-4">Ver Disponibilidade</a>
+    </div>
+    <div class="col-lg-7">
+      <div id="carouselAcomodacoes" class="carousel slide section-carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427" class="d-block w-100">
+          </div>
+          <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a" class="d-block w-100">
+          </div>
+          <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b" class="d-block w-100">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselAcomodacoes" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselAcomodacoes" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- ═══════════════════════════════════════════════════
+     GALERIA DE VIDEOS — FULLWIDTH
+════════════════════════════════════════════════════ -->
+<div id="galeria-videos">
+  <div class="gallery-header">
+    <h2>GALERIA</h2>
+    <div class="gold-line"></div>
+    <p>Imersao completa no universo Paradise Resort — piscinas, spa, gastronomia e momentos inesqueciveis a beira-mar.</p>
+  </div>
+  <div class="video-grid">
+    <!-- 1 — DESTAQUE (2col x 2lin) -->
+    <div class="video-card featured" onclick="openLightbox(0)">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="https://videos.pexels.com/video-files/3449528/3449528-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        <source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4">
+      </video>
+      <button class="play-btn" aria-label="Reproduzir">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="overlay">
+        <span class="tag">Destaque</span>
+        <div class="label">Piscina de Borda Infinita</div>
+        <div class="desc">Vista panoramica ao por do sol</div>
+      </div>
+    </div>
+    <!-- 2 — TALL (1col x 2lin) -->
+    <div class="video-card tall" onclick="openLightbox(1)">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4" type="video/mp4">
+        <source src="https://mdbootstrap.com/img/video/forest.mp4" type="video/mp4">
+      </video>
+      <button class="play-btn" aria-label="Reproduzir">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="overlay">
+        <span class="tag">Spa</span>
+        <div class="label">Ritual de Bem-estar</div>
+        <div class="desc">Tratamentos exclusivos</div>
+      </div>
+    </div>
+    <!-- 3 — WIDE (2col x 1lin) -->
+    <div class="video-card wide" onclick="openLightbox(2)">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="https://videos.pexels.com/video-files/1093662/1093662-uhd_2560_1440_30fps.mp4" type="video/mp4">
+        <source src="https://mdbootstrap.com/img/video/Lines.mp4" type="video/mp4">
+      </video>
+      <button class="play-btn" aria-label="Reproduzir">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="overlay">
+        <span class="tag">Praia</span>
+        <div class="label">Praia Privativa</div>
+        <div class="desc">Areias brancas e mar cristalino</div>
+      </div>
+    </div>
+    <!-- 4 — SQUARE -->
+    <div class="video-card square" onclick="openLightbox(3)">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="https://videos.pexels.com/video-files/3209828/3209828-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        <source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4">
+      </video>
+      <button class="play-btn" aria-label="Reproduzir">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="overlay">
+        <span class="tag">Gastronomia</span>
+        <div class="label">Alta Gastronomia</div>
+        <div class="desc">Sabores do mundo</div>
+      </div>
+    </div>
+    <!-- 5 — SQUARE -->
+    <div class="video-card square" onclick="openLightbox(4)">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="https://videos.pexels.com/video-files/2169880/2169880-uhd_2560_1440_30fps.mp4" type="video/mp4">
+        <source src="https://mdbootstrap.com/img/video/forest.mp4" type="video/mp4">
+      </video>
+      <button class="play-btn" aria-label="Reproduzir">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="overlay">
+        <span class="tag">Natureza</span>
+        <div class="label">Trilhas & Aventura</div>
+        <div class="desc">Ecoturismo exclusivo</div>
+      </div>
+    </div>
+    <!-- 6 — SQUARE -->
+    <div class="video-card square" onclick="openLightbox(5)">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="https://videos.pexels.com/video-files/4763824/4763824-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        <source src="https://mdbootstrap.com/img/video/Lines.mp4" type="video/mp4">
+      </video>
+      <button class="play-btn" aria-label="Reproduzir">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="overlay">
+        <span class="tag">Suites</span>
+        <div class="label">Suites Premium</div>
+        <div class="desc">Luxo em cada detalhe</div>
+      </div>
+    </div>
+    <!-- 7 — SQUARE -->
+    <div class="video-card square" onclick="openLightbox(6)">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="https://videos.pexels.com/video-files/1918465/1918465-uhd_2560_1440_24fps.mp4" type="video/mp4">
+        <source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4">
+      </video>
+      <button class="play-btn" aria-label="Reproduzir">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="overlay">
+        <span class="tag">Eventos</span>
+        <div class="label">Eventos & Celebracoes</div>
+        <div class="desc">Momentos unicos</div>
+      </div>
+    </div>
+    <!-- 8 — WIDE (2col) -->
+    <div class="video-card wide" onclick="openLightbox(7)">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="https://videos.pexels.com/video-files/1466209/1466209-uhd_2560_1440_30fps.mp4" type="video/mp4">
+        <source src="https://mdbootstrap.com/img/video/forest.mp4" type="video/mp4">
+      </video>
+      <button class="play-btn" aria-label="Reproduzir">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="overlay">
+        <span class="tag">Mar</span>
+        <div class="label">Por do Sol a Beira-Mar</div>
+        <div class="desc">O fim do dia perfeito</div>
+      </div>
+    </div>
+  </div><!-- /video-grid -->
+  <div class="gallery-cta">
+    <a href="#reserva" class="btn btn-gold btn-lg">Reserve sua Experiencia</a>
+  </div>
+</div><!-- /galeria-videos -->
+<!-- LIGHTBOX -->
+<div class="video-lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
+    <video id="lightboxVideo" controls playsinline style="width:100%;">
+      Seu navegador nao suporta video.
+    </video>
+    <div class="lightbox-info">
+      <h4 id="lightboxTitle"></h4>
+      <p id="lightboxDesc"></p>
+    </div>
+  </div>
+</div>
+<!-- LAZER -->
+<section id="lazer" class="section-padding">
+<div class="container">
+  <h2 class="luxury-title">LAZER & EXPERIENCIAS</h2>
+  <p class="subtitle">Piscinas com borda infinita, spa relaxante, atividades ao ar livre e programacao exclusiva para todas as idades. No Paradise Resort, cada momento se transforma em uma lembranca inesquecivel.</p>
+  <div class="row align-items-center mt-5">
+    <div class="col-lg-5 mb-4">
+      <h4 class="fw-bold mb-3">Diversao & Relaxamento</h4>
+      <p>Aproveite areas de lazer completas com bar molhado, espaco kids monitorado, quadras esportivas, trilhas ecologicas e eventos ao por do sol. Experiencias pensadas para surpreender.</p>
+      <a href="#reserva" class="btn btn-gold mt-4">Descubra Mais</a>
+    </div>
+    <div class="col-lg-7">
+      <div id="carouselLazer" class="carousel slide lazer-carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" class="d-block w-100">
+          </div>
+          <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206" class="d-block w-100">
+          </div>
+          <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" class="d-block w-100">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselLazer" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselLazer" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- SERVICOS -->
+<section id="servicos" class="section-padding text-center" style="background: #fff;">
+<div class="container">
+  <h2 class="luxury-title">Experiencias & Lazer</h2>
+  <div class="row mt-5 g-4">
+    <div class="col-md-3">
+      <div class="service-box h-100">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M2 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M2 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M12 3v7"/><circle cx="12" cy="3" r="1"/></svg></div>
+        <h5>Piscinas</h5>
+        <p class="text-muted">Areas amplas com vista incrivel.</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="service-box h-100">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22c-4.97 0-9-2.24-9-5v-.09c0-2.1 1.53-3.91 3.75-4.74C7.52 9.27 9.6 7.21 10.66 4.41c.29-.76 1.39-.76 1.68 0C13.4 7.21 15.48 9.27 16.25 12.17 18.47 13 20 14.81 20 16.91V17c0 2.76-4.03 5-9 5z"/><path d="M12 22V12"/></svg></div>
+        <h5>Spa</h5>
+        <p class="text-muted">Relaxamento completo.</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="service-box h-100">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></div>
+        <h5>Gastronomia</h5>
+        <p class="text-muted">Sabores exclusivos.</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="service-box h-100">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M8 22h8"/><path d="M12 11v11"/><path d="M19.5 8c.83 0 1.5-.67 1.5-1.5S20.33 5 19.5 5c-.17 0-.33.03-.49.08C19 3.36 17.66 2 16 2c-1.2 0-2.27.71-2.75 1.76A3.22 3.22 0 0 0 12 3.5c-.47 0-.9.1-1.25.26C10.27 2.71 9.2 2 8 2 6.34 2 5 3.36 5 5.08 4.83 5.03 4.67 5 4.5 5 3.67 5 3 5.67 3 6.5S3.67 8 4.5 8z"/><path d="M12 3.5V11"/></svg></div>
+        <h5>Eventos</h5>
+        <p class="text-muted">Estrutura completa.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- DEPOIMENTOS -->
+<section id="depoimentos" class="section-padding bg-dark-section">
+<div class="container">
+  <h2 class="luxury-title text-white">O Que Nossos Hospedes Dizem</h2>
+  <p class="subtitle" style="color: rgba(255,255,255,0.5);">Historias reais de quem viveu a experiencia Paradise Resort</p>
+  <div class="row mt-5 g-4 justify-content-center">
+    <div class="col-lg-3 col-md-6">
+      <div class="testimonial h-100">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg"
+          class="rounded-circle shadow mb-4" width="90" height="90"
+          style="object-fit:cover; border:4px solid rgba(206, 114, 8, 0.95);">
+        <p class="testimonial-text">"Uma experiencia absolutamente incrivel! O atendimento e impecavel e as instalacoes sao de tirar o folego."</p>
+        <div class="stars mb-3">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="testimonial-name">Mariana Oliveira</div>
+        <div class="testimonial-role">Sao Paulo, SP</div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+      <div class="testimonial h-100">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg"
+          class="rounded-circle shadow mb-4" width="90" height="90"
+          style="object-fit:cover; border:4px solid rgba(206, 114, 8, 0.95);">
+        <p class="testimonial-text">"Voltaremos com certeza. O contato com a natureza e o luxo das acomodacoes tornam tudo perfeito."</p>
+        <div class="stars mb-3">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="testimonial-name">Ricardo Mendes</div>
+        <div class="testimonial-role">Rio de Janeiro, RJ</div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+      <div class="testimonial h-100">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg"
+          class="rounded-circle shadow mb-4" width="90" height="90"
+          style="object-fit:cover; border:4px solid rgba(206, 114, 8, 0.95);">
+        <p class="testimonial-text">"O spa e maravilhoso e a gastronomia surpreendente. Cada refeicao foi uma experiencia unica."</p>
+        <div class="stars mb-3">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="testimonial-name">Camila Santos</div>
+        <div class="testimonial-role">Belo Horizonte, MG</div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+      <div class="testimonial h-100">
+        <img src="https://randomuser.me/api/portraits/men/75.jpg"
+          class="rounded-circle shadow mb-4" width="90" height="90"
+          style="object-fit:cover; border:4px solid rgba(206, 114, 8, 0.95);">
+        <p class="testimonial-text">"Levei toda a familia e todos adoraram. As criancas se divertiram muito e nos relaxamos demais."</p>
+        <div class="stars mb-3">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="testimonial-name">Fernando Costa</div>
+        <div class="testimonial-role">Curitiba, PR</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- RESERVA -->
+<section id="reserva" class="section-padding">
+<div class="container">
+  <div class="reserva-box text-white">
+    <h2 class="luxury-title">Garanta Sua Experiencia</h2>
+    <p class="reserva-subtitle">Reserve agora e viva momentos inesqueciveis em meio a natureza, com todo o conforto e sofisticacao que voce merece.</p>
+    <div class="reserva-features">
+      <div class="reserva-feature">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Atendimento VIP</span>
+      </div>
+      <div class="reserva-feature">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span>Check-in Flexivel</span>
+      </div>
+      <div class="reserva-feature">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Reserva Segura</span>
+      </div>
+      <div class="reserva-feature">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>Suporte 24h</span>
+      </div>
+    </div>
+    <a href="#contato" class="btn btn-gold btn-lg">Reservar Agora</a>
+    <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 18px; margin-bottom: 0;">Cancelamento gratuito ate 48h antes do check-in</p>
+  </div>
+</div>
+</section>
+<!-- CONTATO -->
+<section id="contato" class="section-padding bg-soft">
+<div class="container">
+  <h2 class="luxury-title">Contato & Localizacao</h2>
+  <p class="subtitle">Entre em contato conosco ou visite-nos pessoalmente.</p>
+  <div class="row mt-5">
+    <div class="col-lg-6 mb-4">
+      <h4 class="fw-bold mb-3">Fale Conosco</h4>
+      <form class="contact-form">
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Nome" required>
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="E-mail" required>
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control" rows="5" placeholder="Mensagem" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold">Enviar Mensagem</button>
+      </form>
+    </div>
+    <div class="col-lg-6">
+      <h4 class="fw-bold mb-3">Nossa Localizacao</h4>
+      <div class="contact-info mb-3">
+        <h5>Endereco</h5>
+        <p>Av. Beira Mar, 1234, Praia do Paraiso, Brasil</p>
+        <h5>Telefone</h5>
+        <p>+55 11 99999-9999</p>
+        <h5>E-mail</h5>
+        <p>contato@paradiseresort.com</p>
+      </div>
+      <div class="ratio ratio-16x9" style="border-radius: 12px; overflow: hidden;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.467123456!2d-46.654321!3d-23.567890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce1234567890ab%3A0xabcdef1234567890!2sPraia%20do%20Para%C3%ADso!5e0!3m2!1spt-BR!2sbr!4v1678901234567"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<footer>
+  <div class="footer-social">
+    <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+      <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+      <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    </a>
+    <a href="https://tiktok.com" target="_blank" aria-label="TikTok">
+      <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+    </a>
+  </div>
+  <p>&copy; 2026 Paradise Luxury Resort - Todos os direitos reservados</p>
+</footer>
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/5511999999999?text=Ola!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Paradise%20Resort" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* --- dados dos videos --- */
+const videos = [
+  {
+    src: "https://videos.pexels.com/video-files/3449528/3449528-uhd_2560_1440_25fps.mp4",
+    fallback: "https://mdbootstrap.com/img/video/Tropical.mp4",
+    title: "Piscina de Borda Infinita",
+    desc: "Vista panoramica ao por do sol"
+  },
+  {
+    src: "https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4",
+    fallback: "https://mdbootstrap.com/img/video/forest.mp4",
+    title: "Ritual de Bem-estar",
+    desc: "Tratamentos exclusivos no Spa"
+  },
+  {
+    src: "https://videos.pexels.com/video-files/1093662/1093662-uhd_2560_1440_30fps.mp4",
+    fallback: "https://mdbootstrap.com/img/video/Lines.mp4",
+    title: "Praia Privativa",
+    desc: "Areias brancas e mar cristalino"
+  },
+  {
+    src: "https://videos.pexels.com/video-files/3209828/3209828-uhd_2560_1440_25fps.mp4",
+    fallback: "https://mdbootstrap.com/img/video/Tropical.mp4",
+    title: "Alta Gastronomia",
+    desc: "Sabores exclusivos do mundo"
+  },
+  {
+    src: "https://videos.pexels.com/video-files/2169880/2169880-uhd_2560_1440_30fps.mp4",
+    fallback: "https://mdbootstrap.com/img/video/forest.mp4",
+    title: "Trilhas & Aventura",
+    desc: "Ecoturismo exclusivo"
+  },
+  {
+    src: "https://videos.pexels.com/video-files/4763824/4763824-uhd_2560_1440_25fps.mp4",
+    fallback: "https://mdbootstrap.com/img/video/Lines.mp4",
+    title: "Suites Premium",
+    desc: "Luxo em cada detalhe"
+  },
+  {
+    src: "https://videos.pexels.com/video-files/1918465/1918465-uhd_2560_1440_24fps.mp4",
+    fallback: "https://mdbootstrap.com/img/video/Tropical.mp4",
+    title: "Eventos & Celebracoes",
+    desc: "Momentos unicos e inesqueciveis"
+  },
+  {
+    src: "https://videos.pexels.com/video-files/1466209/1466209-uhd_2560_1440_30fps.mp4",
+    fallback: "https://mdbootstrap.com/img/video/forest.mp4",
+    title: "Por do Sol a Beira-Mar",
+    desc: "O fim do dia perfeito"
+  }
+];
+/* --- fallback automatico: se o video der erro, troca pela fonte reserva --- */
+document.querySelectorAll('.video-grid .video-card video').forEach((vid, i) => {
+  vid.addEventListener('error', function handleError() {
+    const fb = videos[i]?.fallback;
+    if (fb && !vid.dataset.fallbackUsed) {
+      vid.dataset.fallbackUsed = "1";
+      vid.src = fb;
+      vid.load();
+    }
+  }, true);
+});
+/* --- Lightbox --- */
+function openLightbox(index) {
+  const lb   = document.getElementById('lightbox');
+  const vid  = document.getElementById('lightboxVideo');
+  const data = videos[index];
+  vid.src = data.src;
+  document.getElementById('lightboxTitle').textContent = data.title;
+  document.getElementById('lightboxDesc').textContent  = data.desc;
+  vid.onerror = () => { vid.src = data.fallback; vid.load(); vid.play(); };
+  lb.classList.add('active');
+  vid.load();
+  vid.play().catch(() => {});
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  const lb  = document.getElementById('lightbox');
+  const vid = document.getElementById('lightboxVideo');
+  vid.pause();
+  vid.src = '';
+  lb.classList.remove('active');
+  document.body.style.overflow = '';
+}
+function closeLightboxOutside(e) {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+});
+/* --- Menu: recolher ao clicar em link (mobile) --- */
+document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    const navCollapse = document.getElementById('menu');
+    if (navCollapse.classList.contains('show')) {
+      const bsCollapse = bootstrap.Collapse.getInstance(navCollapse) || new bootstrap.Collapse(navCollapse);
+      bsCollapse.hide();
+    }
+  });
+});
+/* --- Lazy video play: only play header videos when visible --- */
+const headerVideos = document.querySelectorAll('#introCarousel video');
+const headerObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.play().catch(() => {});
+    } else {
+      entry.target.pause();
+    }
+  });
+}, { threshold: 0.25 });
+headerVideos.forEach(v => headerObserver.observe(v));
+</script>
 </body>
 </html>
